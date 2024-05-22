@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Datos de usuarios</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th, td {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Datos de usuarios</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Correo electrónico</th>
+        <th>Contraseña</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Código JavaScript para mostrar los datos en la tabla -->
+      <script>
+        // Obtener los datos de usuarios almacenados en el almacenamiento local
+        var users = JSON.parse(localStorage.getItem("users"));
+
+        // Iterar sobre los usuarios y generar las filas de la tabla
+        for (var i = 0; i < users.length; i++) {
+          var user = users[i];
+          var row = document.createElement("tr");
+          var emailCell = document.createElement("td");
+          var passwordCell = document.createElement("td");
+
+          emailCell.textContent = user.email;
+          passwordCell.textContent = user.password;
+
+          row.appendChild(emailCell);
+          row.appendChild(passwordCell);
+
+          document.querySelector("tbody").appendChild(row);
+        }
+      </script>
+    </tbody>
+  </table>
+</body>
+</html>
